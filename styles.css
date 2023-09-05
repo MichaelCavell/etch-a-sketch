@@ -17,11 +17,10 @@ body {
     outline: solid black 1px;
     display: flex;
     flex-wrap: wrap;
-    background-color: aquamarine;
+    background-color: lime;
 }
 
 .squareDiv {
-    background-color: aqua;
     border: solid black 1px;
     height: calc(6.25%);
     width: calc(6.25%);

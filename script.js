@@ -10,7 +10,9 @@ const container = document.getElementById('container');
 const squareDivs = document.querySelectorAll(".squareDiv");
 squareDivs.forEach(function(square) {
     square.addEventListener("mouseover", function() {
-        square.classList.remove("squareDiv");
-        square.classList.add("mouseoverDiv");
+        square.style.backgroundColor = "limegreen";
     });
-})
+    square.addEventListener("mouseleave", function() {
+        square.style.backgroundColor = "green";
+    });
+});
