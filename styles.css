@@ -26,3 +26,17 @@ body {
     height: calc(6.25%);
     width: calc(6.25%);
 }
+
+.mouseoverDiv {
+    background-color: blue;
+    border: solid black 1px;
+    height: calc(6.25%);
+    width: calc(6.25%); 
+}
+
+.mouseleaveDiv {
+    background-color: blueviolet;
+    border: solid black 1px;
+    height: calc(6.25%);
+    width: calc(6.25%); 
+}
