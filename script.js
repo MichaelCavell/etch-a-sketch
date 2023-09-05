@@ -6,13 +6,14 @@ const container = document.getElementById('container');
         container.appendChild(squareDiv);
     }
 
-
-const squareDivs = document.querySelectorAll(".squareDiv");
+const squareDivs = document.querySelectorAll('.squareDiv');
+function addHoverDivClass() {
+    this.classList.add('hoverDiv');
+}
+function addMouseLeaveDivClass() {
+    this.classList.add('mouseleaveDiv');
+}
 squareDivs.forEach(function(square) {
-    square.addEventListener("mouseover", function() {
-        square.style.backgroundColor = "limegreen";
-    });
-    square.addEventListener("mouseleave", function() {
-        square.style.backgroundColor = "green";
-    });
+    square.addEventListener('mouseover', addHoverDivClass);
+    square.addEventListener('mouseleave', addMouseLeaveDivClass);
 });

@@ -21,21 +21,16 @@ body {
 }
 
 .squareDiv {
+    background-color: lime;
     border: solid black 1px;
     height: calc(6.25%);
     width: calc(6.25%);
 }
 
-.mouseoverDiv {
-    background-color: blue;
-    border: solid black 1px;
-    height: calc(6.25%);
-    width: calc(6.25%); 
+.hoverDiv {
+    background-color: limegreen;
 }
 
 .mouseleaveDiv {
-    background-color: blueviolet;
-    border: solid black 1px;
-    height: calc(6.25%);
-    width: calc(6.25%); 
+    background-color: green;
 }
