@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 #container {
@@ -23,8 +24,6 @@ body {
 .squareDiv {
     background-color: lime;
     border: solid black 1px;
-    height: calc(6.25%);
-    width: calc(6.25%);
 }
 
 .hoverDiv {
@@ -33,4 +32,8 @@ body {
 
 .mouseleaveDiv {
     background-color: green;
+}
+
+#clickMe {
+    margin-bottom: 20px;
 }
