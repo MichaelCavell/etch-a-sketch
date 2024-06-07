@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Fasthand&family=Lugrasimo&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.container {
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: red solid 40px;
+    border-top: red solid 20px;
+    gap: 5px;
+}
+
+h1 {
+    background-image: linear-gradient(
+     to right,
+     #462523 0,
+     #cb9b51 22%, 
+     #f6e27a 45%,
+     #f6f2c0 50%,
+     #f6e27a 55%,
+     #cb9b51 78%,
+     #462523 100%
+     );
+    color:transparent;
+    -webkit-background-clip:text;
+    font-family: "Lugrasimo", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    height: 20px;
+
+ }
+
+.pixel-container {
+    background-color: lightgrey;
+    display: flex;
+    flex-wrap: wrap;
+    border: white solid 1px;
+    width: 60vw;
+    height: 60vw;
+}
+
+.column {
+    border: white solid .5px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.pixel {
+    border: white solid 1px;
+    flex: 1 1 auto;
+}
+
