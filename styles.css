@@ -40,29 +40,34 @@ h1 {
     font-family: "Lugrasimo", cursive;
     font-weight: 400;
     font-style: normal;
-    font-size: 16px;
+    font-size: 1rem;
     height: 20px;
-
- }
+}
 
 .pixel-container {
     background-color: lightgrey;
     display: flex;
     flex-wrap: wrap;
-    border: white solid 1px;
+    border: white solid .5px;
     width: 60vw;
     height: 60vw;
 }
 
 .column {
-    border: white solid .5px;
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
 }
 
 .pixel {
-    border: white solid 1px;
+    border: white solid .5px;
     flex: 1 1 auto;
+}
+
+@media screen and (min-width: 600px) {
+    .pixel-container {
+        width: 40vw;
+        height: 40vw;
+    }
 }
 
