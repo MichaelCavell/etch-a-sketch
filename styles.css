@@ -22,6 +22,8 @@ body {
     border: red solid 40px;
     border-top: red solid 20px;
     gap: 5px;
+    border-radius: 25px;
+    box-shadow: 10px 10px 5px lightgray;
 }
 
 h1 {
@@ -41,16 +43,18 @@ h1 {
     font-weight: 400;
     font-style: normal;
     font-size: 1rem;
-    height: 20px;
+    padding-top: 0px;
 }
 
 .pixel-container {
     background-color: lightgrey;
     display: flex;
     flex-wrap: wrap;
-    border: white solid .5px;
     width: 60vw;
     height: 60vw;
+    border-radius: 10px;
+    box-shadow: -2.5px -2.5px 2.5px darkgray;
+    padding: 6px;
 }
 
 .column {
@@ -60,8 +64,18 @@ h1 {
 }
 
 .pixel {
-    border: white solid .5px;
     flex: 1 1 auto;
+}
+
+.active-pixel {
+    position: relative;
+    top: -1.5px;
+    background-color: rgb(151, 151, 151);
+
+}
+
+.drawn-pixel {
+    background-color: rgb(56, 56, 56);
 }
 
 @media screen and (min-width: 600px) {
@@ -70,4 +84,3 @@ h1 {
         height: 40vw;
     }
 }
-
