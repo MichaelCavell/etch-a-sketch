@@ -1,6 +1,8 @@
 const container = document.querySelector('.pixel-container');
+const pixelButton = document.querySelector('.pixel-button');
 let pixels = document.querySelectorAll('.pixel');
 let activePixels = document.querySelectorAll('.active-pixel');
+let pixelCount;
 
 function addPixelListeners() {
     pixels.forEach(function(pixel, index) {
@@ -49,4 +51,36 @@ function makeGrid(sideCount) {
     sketchRefresh();
 }
 
-makeGrid(100);
+function buttonHover() {
+    pixelButton.classList.add('active-button');
+}
+
+function buttonMouseOut() {
+    pixelButton.classList.remove('active-button');
+}
+
+function clearPixels() {
+    let pixel = container.lastElementChild;
+        while (pixel) {
+            container.removeChild(pixel);
+            pixel = container.lastElementChild;
+        }
+}
+
+function pixelPrompt() {
+    pixelCount = parseInt(prompt('How many pixels per side? (min: 1 | max: 100)'));
+    if (Number.isNaN(pixelCount) || pixelCount < 1 || pixelCount > 100) {
+        alert('Please only enter a number value from 1 to 100');
+    } else {
+        clearPixels();
+        makeGrid(pixelCount);
+    }
+}
+
+if (!pixelCount) {
+    makeGrid(16);
+}
+
+pixelButton.addEventListener('mouseover', buttonHover);
+pixelButton.addEventListener('mouseout', buttonMouseOut);
+pixelButton.addEventListener('click', pixelPrompt);
