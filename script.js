@@ -31,7 +31,6 @@ function generateRandomColor() {
 
 function makeInactive(pixel) {
     if (currentMode === 'colorful' && !(pixel.classList.contains('inactive'))) {
-        console.log(pixel);
         const currentColor = generateRandomColor();
         pixel.style.backgroundColor = currentColor;
         pixel.classList.add('inactive');
