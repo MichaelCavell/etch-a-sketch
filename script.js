@@ -1,7 +1,10 @@
 const container = document.querySelector('.pixel-container');
 const pixelButton = document.querySelector('.pixel-button');
+const classicButton = document.querySelector('.classic-button');
+const colorfulButton = document.querySelector('.colorful-button');
+const shadingButton = document.querySelector('.shading-button');
 let pixels = document.querySelectorAll('.pixel');
-let activePixels = document.querySelectorAll('.active-pixel');
+let currentMode;
 let pixelCount;
 
 function addPixelListeners() {
@@ -14,22 +17,50 @@ function addPixelListeners() {
 
 function sketchRefresh() {
     pixels.forEach(function(pixel) {
-        pixel.classList.remove('active-pixel');
         pixel.classList.remove('drawn-pixel');
     })
 }
 
+function generateRandomColor() {
+    const roy = Math.floor(Math.random() * 256);
+    const gee = Math.floor(Math.random() * 256);
+    const biv = Math.floor(Math.random() * 256);
+    const rgb = `rgb(${roy}, ${gee}, ${biv})`; 
+    return rgb;
+}
+
 function makeInactive(pixel) {
-    pixel.classList.remove('active-pixel');
-    pixel.classList.add('drawn-pixel');
+    if (currentMode === 'colorful' && !(pixel.classList.contains('inactive'))) {
+        console.log(pixel);
+        const currentColor = generateRandomColor();
+        pixel.style.backgroundColor = currentColor;
+        pixel.classList.add('inactive');
+    }
+
+    if (currentMode === 'shading') {
+        if (!pixel.style.opacity) {
+            pixel.style.opacity = .1;
+
+            pixel.addEventListener('mouseenter', function() {
+                let currentOpacity = pixel.style.opacity;
+
+                if (currentOpacity >= 1) {
+                    return
+                }
+
+                let newOpacity = Number(currentOpacity) + .1;
+                pixel.style.opacity = newOpacity;
+            })
+        }
+    }
 }
 
 function makeActive(pixel) {
-    pixel.classList.add('active-pixel');
-    activePixels = document.querySelectorAll('.active-pixel');
-    activePixels.forEach(function(activePixel, index) {
-        activePixel.addEventListener('mouseout', function() {
-            makeInactive(activePixels[index]);
+    pixel.classList.add('drawn-pixel');
+    drawnPixels = document.querySelectorAll('.drawn-pixel');
+    drawnPixels.forEach(function(drawnPixel, index) {
+        drawnPixel.addEventListener('mouseenter', function() {
+            makeInactive(drawnPixels[index]);
         })
     })
 }
@@ -45,18 +76,11 @@ function makeGrid(sideCount) {
             column.appendChild(pixel); 
         }
     }
+    
     pixels = document.querySelectorAll('.pixel');
     activePixels = document.querySelectorAll('.active-pixel');
     addPixelListeners();
     sketchRefresh();
-}
-
-function buttonHover() {
-    pixelButton.classList.add('active-button');
-}
-
-function buttonMouseOut() {
-    pixelButton.classList.remove('active-button');
 }
 
 function clearPixels() {
@@ -68,8 +92,15 @@ function clearPixels() {
 }
 
 function pixelPrompt() {
-    pixelCount = parseInt(prompt('How many pixels per side? (min: 1 | max: 100)'));
-    if (Number.isNaN(pixelCount) || pixelCount < 1 || pixelCount > 100) {
+    pixelCount = prompt('How many pixels per side? (min: 1 | max: 100)');
+    
+    if (!pixelCount) {
+        return;
+    }
+
+    let pixelParsed = parseInt(pixelCount);
+
+    if (Number.isNaN(pixelParsed) || pixelParsed < 1 || pixelParsed > 100) {
         alert('Please only enter a number value from 1 to 100');
     } else {
         clearPixels();
@@ -77,10 +108,54 @@ function pixelPrompt() {
     }
 }
 
+function classicMode() {
+    currentMode = null;
+
+    if (!pixelCount) {
+        clearPixels();
+        makeGrid(16);
+        return;
+    }
+
+    clearPixels();
+    makeGrid(pixelCount);
+}
+
+function colorfulMode() {
+    currentMode = 'colorful';
+
+    if (!pixelCount) {
+        clearPixels();
+        makeGrid(16);
+        return;
+    }
+
+    clearPixels();
+    makeGrid(pixelCount);
+}
+
+function shadingMode() {
+    currentMode = 'shading';
+
+    if (!pixelCount) {
+        clearPixels();
+        makeGrid(16);
+        return;
+    }
+
+    clearPixels();
+    makeGrid(pixelCount);
+}
+
 if (!pixelCount) {
     makeGrid(16);
 }
 
-pixelButton.addEventListener('mouseover', buttonHover);
-pixelButton.addEventListener('mouseout', buttonMouseOut);
 pixelButton.addEventListener('click', pixelPrompt);
+classicButton.addEventListener('click', classicMode);
+colorfulButton.addEventListener('click', colorfulMode);
+shadingButton.addEventListener('click', shadingMode);
+
+
+
+
